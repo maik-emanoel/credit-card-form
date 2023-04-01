@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulário de Cartão de Crédito</title>
+
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <main>
+        <form>
+          <div class="card-number-wrapper">
+            <label for="card-number">Número do cartão</label>
+            <input
+              type="number"
+              name="card-number"
+              id="card-number"
+              class=""
+              placeholder="**** **** ****"
+            />
+            <p class="error-message">
+              <img src="./assets/warning-icon.svg" alt="Ícone de aviso" />
+              Insira um número de cartão válido
+            </p>
+          </div>
+
+          <div class="wrapper">
+            <label for="cardholder-name">Nome do títular</label>
+            <input
+              type="text"
+              name="cardholder-name"
+              id="cardholder-name-input"
+              placeholder="Nome como está no cartão"
+            />
+          </div>
+
+          <div class="input-wrapper">
+            <div class="validity">
+              <label for="validity">Validade</label>
+              <input
+                type="number"
+                name="validity"
+                id="validity-input"
+                placeholder="mm/aa"
+              />
+            </div>
+            <div class="cvv-wrapper">
+              <label for="cvv">
+                CVV
+                <img
+                  src="./assets/question-icon.svg"
+                  alt="Ícone de interrogação"
+                />
+              </label>
+
+              <p class="cvv-description">
+                Valor de verificação do cartão, trata-se do código de validação para compras online com o cartão de crédito, utilizado no lugar da senha.
+              </p>
+
+              <input
+                type="number"
+                name="cvv"
+                id="cvv-input"
+                placeholder="***"
+              />
+            </div>
+          </div>
+        </form>
+        <div class="card-container">
+          <div class="card">
+            <div class="card-front">
+              <div class="top-info">
+                <div class="card-type">
+                  <img
+                    src="./assets/visa-card.svg"
+                    alt="Ícone do cartão da marca Visa"
+                  />
+                </div>
+                <img
+                  src="./assets/contactless-payment-icon.svg"
+                  alt="Ícone de pagamento por aproximação"
+                />
+              </div>
+              <div class="card-number-info">594235727945</div>
+              <div class="bottom-info">
+                <div class="name">Maik Emanoel</div>
+                <div class="date">12/02</div>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="cvv-info">123</div>
+            </div>
+          </div>
+        </div>
+        <p class="security">
+          <img
+            src="./assets/shield-check-icon.svg"
+            alt="Ícone de escudo de verificação"
+          />
+          Seus dados estão seguros
+        </p>
+      </main>
+
+      <button class="add-card" disabled>
+        <p>Adicionar cartão</p>
+        <img src="./assets/loading-icon.svg" alt="Ícone de carregamento">
+      </button>
+    </div>
+
+    <script src="./main.js"></script>
+  </body>
+</html>

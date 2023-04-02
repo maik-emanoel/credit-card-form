@@ -21,10 +21,11 @@
           <div class="card-number-wrapper">
             <label for="card-number">Número do cartão</label>
             <input
-              type="number"
-              name="card-number"
+              type="text"
+              name="cardn-umber"
               id="card-number"
               class=""
+              maxlength="12"
               placeholder="**** **** ****"
             />
             <p class="error-message">
@@ -40,6 +41,7 @@
               name="cardholder-name"
               id="cardholder-name-input"
               placeholder="Nome como está no cartão"
+              maxlength="20"
             />
           </div>
 
@@ -47,10 +49,11 @@
             <div class="validity">
               <label for="validity">Validade</label>
               <input
-                type="number"
+                type="text"
                 name="validity"
                 id="validity-input"
                 placeholder="mm/aa"
+                maxlength="5"
               />
             </div>
             <div class="cvv-wrapper">
@@ -90,10 +93,12 @@
                   alt="Ícone de pagamento por aproximação"
                 />
               </div>
-              <div class="card-number-info">594235727945</div>
+              <div class="card-number-info">0000 0000 0000</div>
               <div class="bottom-info">
-                <div class="name">Maik Emanoel</div>
-                <div class="date">12/02</div>
+                <div class="name">Seu nome aqui</div>
+                <div class="date">
+                  <img src="./assets/empty-validity-input-img.svg" alt="">
+                </div>
               </div>
             </div>
             <div class="card-back">

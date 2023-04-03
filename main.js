@@ -23,13 +23,33 @@ cardNumberInput.addEventListener('keydown', function(e) {
 
 cardNumberInput.addEventListener('input', (e) => {
   let inputValue = e.target.value
+  const firstDigit = inputValue.charAt(0)
 
   if(inputValue == '') {
     cardNumberInfo.innerHTML = '0000 0000 0000'
   } else {
     cardNumberInfo.innerHTML = inputValue.replace(/(.{4})/g, '$1 ')
+    detectCardType(firstDigit)
   }
 })
+
+let cardTypes = {
+  elo: '<img src="./assets/elo-card.svg" alt="Ícone do cartão Elo" />',
+  mastercard: '<img src="./assets/mastercard-card.svg" alt="Ícone do cartão MasterCard" />',
+  visa: '<img src="./assets/visa-card.svg" alt="Ícone do cartão Visa"/>'
+}
+
+function detectCardType(firstDigit) {
+  const cardTypeDiv = document.querySelector('.card-type')
+
+  if(firstDigit >= 0 && firstDigit <= 3) {
+    cardTypeDiv.innerHTML = cardTypes.elo
+  } else if (firstDigit >= 4 && firstDigit <= 6) {
+    cardTypeDiv.innerHTML = cardTypes.mastercard
+  } else {
+    cardTypeDiv.innerHTML = cardTypes.visa
+  }
+}
 
 cardNumberInput.addEventListener('change', showErrorMessage)
 function showErrorMessage() {

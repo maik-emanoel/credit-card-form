@@ -282,14 +282,14 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .add-card.loading img{
-    animation: toSpin .7s infinite linear;
+    animation: spin .7s infinite linear;
     display: initial;
 }
 
 #successful-message {
     position: absolute;
     top: 14%;
-    left: 50%;
+    left: calc(50% - 25rem);
 
     transform: translateX(-50%);
 
@@ -299,10 +299,10 @@ input[type=number]::-webkit-inner-spin-button {
 
     border-radius: .6rem;
     background: var(--body-bg-color);
-    box-shadow: 3px 4px 26px 0px #00000040;
+    box-shadow: .3rem .4rem 2.6rem .0rem #00000040;
     z-index: 1;
 
-    animation: fromTop .6s backwards;
+    animation: fromTop .6s forwards;
     display: none;
 }
 
@@ -325,12 +325,23 @@ input[type=number]::-webkit-inner-spin-button {
     color: var(--fonts-color);
 }
 
-@keyframes toSpin {
+@keyframes spin {
     from {
         transform: rotate(0deg);
     }
     to {
         transform: rotate(360deg);
+    }
+}
+
+@keyframes fromTop {
+    from {
+        transform: translateY(-2rem);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
     }
 }
 

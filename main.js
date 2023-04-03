@@ -4,6 +4,7 @@ const cardNumberInput = document.querySelector('#card-number')
 const cardHolderInput = document.querySelector('#cardholder-name-input')
 const validityInput = document.querySelector('#validity-input')
 const cvvInput = document.querySelector('#cvv-input')
+const addCardBtn = document.querySelector('.add-card')
 
 cardContainer.addEventListener('click', () => {
   cardContainer.classList.toggle('flipped')
@@ -28,12 +29,6 @@ cardNumberInput.addEventListener('input', (e) => {
     cardNumberInfo.innerHTML = inputValue.replace(/(.{4})/g, '$1 ')
   }
 })
-
-cardNumberInput.addEventListener('change', formateCardNumberValue)
-function formateCardNumberValue() {
-  const formattedValue = cardNumberInput.value.replace(/(.{4})/g, '$1 ')
-  cardNumberInput.value = formattedValue
-}
 
 cardHolderInput.addEventListener('keydown', (e) => {
   if (!/^[a-zA-Z\s]+$/.test(e.key)) {
@@ -80,11 +75,11 @@ validityInput.addEventListener('input', (e) => {
   }
 })
 
+const maxLength = 3
+
 cvvInput.addEventListener('input', (e) => {
   const cvv = document.querySelector('.cvv-info')
   let inputValue = e.target.value
-
-  const maxLength = 3
         
   if (cvvInput.value.length > maxLength) {
       cvvInput.value = inputValue.slice(0, maxLength)
@@ -93,4 +88,39 @@ cvvInput.addEventListener('input', (e) => {
   cvv.innerHTML = cvvInput.value
 })
 
+const myInputs = [cardNumberInput, cardHolderInput, validityInput, cvvInput]
+
+myInputs.forEach((input) => {
+  input.addEventListener('input', isActive)
+})
+
+function isActive() {
+  if(
+    cardNumberInput.value.length === 12 &&
+    cardHolderInput.value !== '' &&
+    validityInput.value.length === 5 &&
+    cvvInput.value.length === maxLength
+  ) {
+    addCardBtn.disabled = false
+  } else {
+    addCardBtn.disabled = true
+  }
+}
+
+const secondsTofinishLoading = 1500 // 1.5 seconds
+const secondsToMessageDisappear = 4000 // 4 seconds
+
+addCardBtn.addEventListener('click', () => {
+  const sucessfulMessage = document.querySelector('#successful-message')
+  addCardBtn.classList.add('loading')
+
+  setTimeout(() => {
+    addCardBtn.classList.remove('loading')
+    sucessfulMessage.style.display = 'initial'
+  }, secondsTofinishLoading)
+
+  setTimeout(() => {
+    sucessfulMessage.style.display = 'none'
+  }, secondsToMessageDisappear)
+})
 

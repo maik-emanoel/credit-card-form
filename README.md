@@ -1,4 +1,4 @@
-<h1 align="center"> Formulário de um Cartão de Crédito - BoraCodar#13 </h1>
+<h1 align="center"> Formulário de Cartão de Crédito - BoraCodar#13 </h1>
 
 ![preview](./.github/preview.png)
 

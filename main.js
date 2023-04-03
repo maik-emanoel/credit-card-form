@@ -5,6 +5,7 @@ const cardHolderInput = document.querySelector('#cardholder-name-input')
 const validityInput = document.querySelector('#validity-input')
 const cvvInput = document.querySelector('#cvv-input')
 const addCardBtn = document.querySelector('.add-card')
+const cvvImg = document.querySelector('.cvv-wrapper img')
 
 cardContainer.addEventListener('click', () => {
   cardContainer.classList.toggle('flipped')
@@ -137,3 +138,14 @@ addCardBtn.addEventListener('click', () => {
   }, secondsToMessageDisappear)
 })
 
+
+cvvImg.addEventListener('click', showCvvDescription)
+function showCvvDescription() {
+  const cvvDescription = document.querySelector('.cvv-description')
+
+  if(cvvDescription.style.display == 'none') {
+    cvvDescription.style.display = 'initial'
+  } else {
+    cvvDescription.style.display = 'none'
+  }
+}

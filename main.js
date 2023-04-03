@@ -30,6 +30,19 @@ cardNumberInput.addEventListener('input', (e) => {
   }
 })
 
+cardNumberInput.addEventListener('change', showErrorMessage)
+function showErrorMessage() {
+  const errorMessage = document.querySelector('.error-message')
+
+  if(cardNumberInput.value.length < 12 && cardNumberInput.value !== '') {
+    cardNumberInput.classList.add('error')
+    errorMessage.style.display = 'flex'
+  } else {
+    cardNumberInput.classList.remove('error')
+    errorMessage.style.display = 'none'
+  }
+}
+
 cardHolderInput.addEventListener('keydown', (e) => {
   if (!/^[a-zA-Z\s]+$/.test(e.key)) {
     e.preventDefault();

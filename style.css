@@ -283,6 +283,46 @@ input[type=number]::-webkit-inner-spin-button {
 
 .add-card.loading img{
     animation: toSpin .7s infinite linear;
+    display: initial;
+}
+
+#successful-message {
+    position: absolute;
+    top: 14%;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 50%;
+    max-width: 45rem;
+    padding: 1.6rem 1.6rem;
+
+    border-radius: .6rem;
+    background: var(--body-bg-color);
+    box-shadow: 3px 4px 26px 0px #00000040;
+    z-index: 1;
+
+    animation: fromTop .6s backwards;
+    display: none;
+}
+
+#successful-message img {
+    width: 2.4rem;
+    height: 2.4rem;
+}
+
+#successful-message p {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+
+    width: fit-content;
+    margin: auto;
+    
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 2.4rem;
+    color: var(--fonts-color);
 }
 
 @keyframes toSpin {

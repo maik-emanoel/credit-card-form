@@ -158,14 +158,19 @@ addCardBtn.addEventListener('click', () => {
   }, secondsToMessageDisappear)
 })
 
+const cvvDescription = document.querySelector('.cvv-description')
 
 cvvImg.addEventListener('click', showCvvDescription)
 function showCvvDescription() {
-  const cvvDescription = document.querySelector('.cvv-description')
-
   if(cvvDescription.style.display == 'none') {
     cvvDescription.style.display = 'initial'
   } else {
     cvvDescription.style.display = 'none'
   }
 }
+
+window.addEventListener('click', (e) => {
+  if(e.target !== cvvImg && e.target !== cvvDescription) {
+    cvvDescription.style.display = 'none'
+  }
+})

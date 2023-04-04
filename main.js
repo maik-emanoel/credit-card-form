@@ -7,12 +7,15 @@ const cvvInput = document.querySelector('#cvv-input')
 const addCardBtn = document.querySelector('.add-card')
 const cvvImg = document.querySelector('.cvv-wrapper img')
 
-cardContainer.addEventListener('click', () => {
+cardContainer.addEventListener('click', addAnimationOnCard)
+function addAnimationOnCard() {
   cardContainer.classList.toggle('flipped')
-})
+}
 
-cardNumberInput.addEventListener('keydown', function(e) {
-  if (!/^\d+$/.test(e.key) 
+const acceptOnlyNumbers = /^\d+$/
+
+cardNumberInput.addEventListener('keydown', (e) => {
+  if (!acceptOnlyNumbers.test(e.key) 
   && e.key !== 'Backspace' 
   && e.key !== 'Delete' 
   && e.key !== 'ArrowLeft' 
@@ -24,11 +27,12 @@ cardNumberInput.addEventListener('keydown', function(e) {
 cardNumberInput.addEventListener('input', (e) => {
   let inputValue = e.target.value
   const firstDigit = inputValue.charAt(0)
+  const addSpaceEveryFourCharacter = /(.{4})/g
 
   if(inputValue == '') {
     cardNumberInfo.innerHTML = '0000 0000 0000'
   } else {
-    cardNumberInfo.innerHTML = inputValue.replace(/(.{4})/g, '$1 ')
+    cardNumberInfo.innerHTML = inputValue.replace(addSpaceEveryFourCharacter, '$1 ')
     detectCardType(firstDigit)
   }
 })
@@ -65,7 +69,9 @@ function showErrorMessage() {
 }
 
 cardHolderInput.addEventListener('keydown', (e) => {
-  if (!/^[a-zA-Z\s]+$/.test(e.key)) {
+  const onlyLetters = /^[a-zA-Z\s]+$/
+
+  if (!onlyLetters.test(e.key)) {
     e.preventDefault();
   }
 })
@@ -83,9 +89,9 @@ cardHolderInput.addEventListener('input', (e) => {
 
 validityInput.addEventListener('keydown', (e) => {
   let inputValue = e.target.value
-  const regex = /^\d+$/
+  const onlyNumbers = /^\d+$/
   
-  if(!regex.test(e.key) && e.key !== 'Backspace') {
+  if(!onlyNumbers.test(e.key) && e.key !== 'Backspace') {
     e.preventDefault()
   }
 
@@ -145,16 +151,16 @@ const secondsTofinishLoading = 1500 // 1.5 seconds
 const secondsToMessageDisappear = 4000 // 4 seconds
 
 addCardBtn.addEventListener('click', () => {
-  const sucessfulMessage = document.querySelector('#successful-message')
+  const successfulMessage = document.querySelector('#successful-message')
   addCardBtn.classList.add('loading')
 
   setTimeout(() => {
     addCardBtn.classList.remove('loading')
-    sucessfulMessage.style.display = 'initial'
+    successfulMessage.style.display = 'initial'
   }, secondsTofinishLoading)
 
   setTimeout(() => {
-    sucessfulMessage.style.display = 'none'
+    successfulMessage.style.display = 'none'
   }, secondsToMessageDisappear)
 })
 
@@ -162,11 +168,8 @@ const cvvDescription = document.querySelector('.cvv-description')
 
 cvvImg.addEventListener('click', showCvvDescription)
 function showCvvDescription() {
-  if(cvvDescription.style.display == 'none') {
-    cvvDescription.style.display = 'initial'
-  } else {
-    cvvDescription.style.display = 'none'
-  }
+  const display = cvvDescription.style.display == 'none' ? 'initial' : 'none'
+  cvvDescription.style.display = display
 }
 
 window.addEventListener('click', (e) => {

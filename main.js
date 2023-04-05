@@ -128,6 +128,14 @@ cvvInput.addEventListener('input', (e) => {
   cvv.innerHTML = cvvInput.value
 })
 
+cvvInput.addEventListener('focus', () => {
+  addAnimationOnCard()
+})
+
+cvvInput.addEventListener('blur', () => {
+  cardContainer.classList.remove('flipped')
+})
+
 const myInputs = [cardNumberInput, cardHolderInput, validityInput, cvvInput]
 
 myInputs.forEach((input) => {

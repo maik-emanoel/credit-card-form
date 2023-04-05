@@ -22,6 +22,7 @@ Após o desenvolvimento do projeto inicial, adicionei novas features, tais quais
 
 - Layout responsivo (Adaptado para telas menores)
 - Animação ao tocar no cartão
+- Animação de loading ao clicar no botão
 - Inputs com pequenas validações
 - Mensagem de êxito
 - Mudança do tipo do cartão de acordo com o número inicial

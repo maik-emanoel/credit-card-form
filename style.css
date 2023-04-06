@@ -192,7 +192,7 @@ input[type=number]::-webkit-inner-spin-button {
 .card-front .card-number-info {
     width: 100%;
     font-weight: 600;
-    letter-spacing: .8rem;
+    letter-spacing: .4rem;
     line-height: 1.6rem;
 
     margin-bottom: 2.4rem;

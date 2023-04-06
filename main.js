@@ -30,7 +30,7 @@ cardNumberInput.addEventListener('input', (e) => {
   const addSpaceEveryFourCharacter = /(.{4})/g
 
   if(inputValue == '') {
-    cardNumberInfo.innerHTML = '0000 0000 0000'
+    cardNumberInfo.innerHTML = '0000 0000 0000 0000'
   } else {
     cardNumberInfo.innerHTML = inputValue.replace(addSpaceEveryFourCharacter, '$1 ')
     detectCardType(firstDigit)
@@ -59,7 +59,7 @@ cardNumberInput.addEventListener('change', showErrorMessage)
 function showErrorMessage() {
   const errorMessage = document.querySelector('.error-message')
 
-  if(cardNumberInput.value.length < 12 && cardNumberInput.value !== '') {
+  if(cardNumberInput.value.length < 16 && cardNumberInput.value !== '') {
     cardNumberInput.classList.add('error')
     errorMessage.style.display = 'flex'
   } else {
@@ -144,7 +144,7 @@ myInputs.forEach((input) => {
 
 function isActive() {
   if(
-    cardNumberInput.value.length === 12 &&
+    cardNumberInput.value.length === 16 &&
     cardHolderInput.value !== '' &&
     validityInput.value.length === 5 &&
     cvvInput.value.length === maxLength

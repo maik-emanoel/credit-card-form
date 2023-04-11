@@ -87,26 +87,32 @@ cardHolderInput.addEventListener('input', (e) => {
   }
 })
 
-validityInput.addEventListener('keydown', (e) => {
-  let inputValue = e.target.value
-  const onlyNumbers = /^\d+$/
-  
-  if(!onlyNumbers.test(e.key) && e.key !== 'Backspace') {
-    e.preventDefault()
-  }
+function formatDateValue() {
+  IMask(validityInput, {
+    mask: 'MM{/}AA',
+    blocks: {
+      MM: {
+        mask: IMask.MaskedRange,
+        from: 1,
+        to: 31,
+      },
+      AA: {
+        mask: IMask.MaskedRange,
+        from: String(new Date().getFullYear()).slice(2),
+        to: String(new Date().getFullYear() + 10).slice(2)
+      }
+    }
+  })
 
-  if (inputValue.length === 2 && e.key !== 'Backspace') {
-    e.target.value = inputValue + '/'
-  }
-  
-})
+  return validityInput.value
+}
 
-validityInput.addEventListener('input', (e) => {
+validityInput.addEventListener('input', () => {
   const date = document.querySelector('.date')
   const validityInputEmptyImg = `
   <img src="./assets/empty-validity-input-img.svg" />
   `
-  let inputValue = e.target.value
+  let inputValue = formatDateValue()
 
   if (inputValue !== '') {
     date.innerHTML = inputValue
